@@ -1,0 +1,13 @@
+﻿<WndTap Name="mat_po" Text="mat_po" Ver="2">
+<var name="refreshAfterEdit" expr="2"/>
+<var name="dataRequired" expr="mat_id[mat_id],wip_no,num_po"/>
+<var name="dataRequireless" expr=""/>
+<xi:include href="lan\mat_po.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<Ctrls>
+<GroupBox  Name="GBmat_po" id="mat_po" Text="mat_po" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBDEDIT.xml"/>
+<BR AutoHeight="1"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBOPE.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_Vh.xml"/></Ctrls></GroupBox></Ctrls>
+	<OnChanged></OnChanged>
+	<OnActivate><SetVisible name="insertmat_po" Visible="1"/><SetVisible name="modifymat_po" Visible="0"/></OnActivate>
+</WndTap>

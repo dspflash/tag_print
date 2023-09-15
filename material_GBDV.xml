@@ -1,0 +1,17 @@
+﻿<GroupBox Name="GBDVmaterial" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Size="700,450" loadedclick="0" Name="materialLst" ToolTip="ttp_material" Heading="mat_no,100;mat_name,110;num_per_cab,55;corp_id,120;mat_id,20;">
+	<DbDetails fcsm="1">
+<Index>mat_id</Index>
+<DbTable>material m left join corp c on m.corp_id=c.corp_id</DbTable>
+<Data>m.mat_no,m.mat_name,m.num_per_cab,c.corp_name corp_id,m.mat_id</Data>
+<Order>mat_id</Order></DbDetails>%{}
+<operator firstpage="0" nextpage="0" initial="0" prepage="0" refresh="1">
+<op text="modify"><DbDetails><Where>mat_id='%{material_vLst[mat_id]}'</Where></DbDetails><submit namelist="DbDetails" next="$this.material.materialLst"/><assign expr="%{this}" name="$this.material.frmwndctrl"/></op>
+<op needconfirm="1" text="delete"><DbDetails>
+<DbTable>material</DbTable>
+<Where>mat_id='%{material_vLst[mat_id]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit/></op>
+</operator>
+</ListCtrl>
+</Ctrls></GroupBox>

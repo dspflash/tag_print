@@ -1,0 +1,18 @@
+﻿<GroupBox cols="xs12 sm6 md4" Multiline="0" Name="GBPGcorp"><Ctrls>
+<Label Align="Right" Text="Records" Name="lb_Records" Size="60,20"/>
+<TextBox Weight="40" ToolTip="ttp_records" Name="records_corp" Size="40,20" OnLoad="init" readonly="1">
+<DbDetails fcsm="1">
+<Index>corp_id</Index>
+<DbTable>corp c</DbTable>
+<Data>count(*) records</Data>
+<Order>corp_id</Order><Queryformat>select %{data} from (select c.corp_id from %{dbtable} %{where} GROUP BY c.corp_id  ORDER BY c.corp_id) t</Queryformat></DbDetails>
+<OnEnchange>
+<assign name="pgs_corp" expr="js(Math.ceil(%{records_corp}/%{corp_vLst[countsperpage]}))"/>
+<assign name="pgscb_corp" expr="js('1~'+Math.ceil(%{records_corp}/%{corp_vLst[countsperpage]}))" function="setitems"/>
+</OnEnchange>
+</TextBox>
+<!--ComboBox Weight="60" ToolTip="ttp_pgs" Name="pgscb_corp" Size="60,20"><OnSelEndOK><submit next="corp_vLst" function="GetPage(%{pgscb_corp}-1)"/></OnSelEndOK></ComboBox-->
+<TextBox Weight="30" ToolTip="ttp_pgs" Name="pgs_corp" Size="30,20" readonly="1"/>
+<TextBox Weight="30" ToolTip="ttp_pgcur" Name="pgcur_corp" Size="30,20"/>
+<Button Text="go2Page" Name="go2pagecorp_vLst" Size="50,20"><OnClick><submit next="corp_vLst" function="GetPage(%{pgcur_corp}-1)"/></OnClick></Button>
+</Ctrls></GroupBox>

@@ -1,0 +1,21 @@
+﻿<operator refresh="1" initial="0" firstpage="0" prepage="0" nextpage="0">
+<op text="modify"><DbDetails><Where>mat_poid='%{mat_po_vLst[mat_poid]}'</Where></DbDetails><submit namelist="DbDetails" next="$this.mat_po.mat_poLst"/><assign name="$this.mat_po.frmwndctrl" expr="%{this}"/></op>
+<op text="print">
+	<assign name="$this.so_inv_print.cab_nums" expr=""/>
+	<assign name="$this.so_inv_print.cab_no" expr="0"/>
+	<assign name="$this.so_inv_print.serial_no" expr="%{serial_no_init}"/>
+	<submit next="$this.so_inv_print.wip_num_po" function="resetcontent"/>
+	<submit next="$this.so_inv_print.qr_itemname" function="resetcontent"/>
+	<DbDetails fcsm="1"><DbTable>mat_po p join material m on p.mat_id=m.mat_id join corp c on m.corp_id=c.corp_id</DbTable>
+<Index>mat_poid</Index>
+<Data>num_po,wip_no,strftime('%Y%m%d', dt) date_inv,mat_no,mat_name,num_per_cab cab_nums,corp_name,vender_no,mat_poid</Data>
+<queryFormat/><Where>mat_poid='%{mat_po_vLst[mat_poid]}'</Where>
+</DbDetails>
+	<submit namelist="DbDetails" next="$this.so_inv_print.wip_num_po"/>
+</op>
+<op text="delete" needconfirm="1"><DbDetails>
+<DbTable>mat_po</DbTable>
+<Where>mat_poid='%{mat_po_vLst[mat_poid]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit/></op>
+</operator>

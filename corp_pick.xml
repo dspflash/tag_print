@@ -1,0 +1,28 @@
+﻿<WndTap Name="corp_pick" Text="corp_Pick">
+<var name="searchtmpl"><corp_name format="(c.corp_name like '%%{opvalue}%')"/><vender_no format="(c.vender_no like '%%{opvalue}%')"/><corp_id format="(c.corp_id like '%%{opvalue}%')"/></var>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\corp.xml"/>
+<Ctrls><GroupBox  Name="GBcorp" id="corp" Text="corp" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="corp_Vs.xml"/>
+<BR AutoHeight="1"/><GroupBox  Name="GBOPVcorp" Size="100,20" cols="xs12 sm6 md4"><Ctrls>
+<Button Text="reset" ToolTip="ttp_resetcorp" Name="resetcorp" Size="50,20">
+	<OnClick>
+		<submit next="GBDEDITcorp" function="reset"/>
+	</OnClick>
+</Button><TAB/>
+<Button Text="Search" ToolTip="ttp_gsearchcorp" Name="gsearchcorp" Size="50,20">
+	<OnClick>
+		<search next="corp_vLst" listed="0" prefixwhere="0" prefixand="0" inputed="1">%{searchtmpl}</search><submit next="GBDEDITcorp" namelist="search" function="search"/>
+	</OnClick>
+</Button><TAB/></Ctrls></GroupBox>
+<BR AutoHeight="1"/><GroupBox Name="GBDVcorp" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Name="corp_vLst" ToolTip="ttp_corp_v" Size="700,450" Heading="corp_name,250;vender_no,250;corp_id,20;" loadedclick="0">
+	<DbDetails >
+<Index>corp_id</Index>
+<DbTable>corp c</DbTable>
+<Data>c.corp_name,c.vender_no,c.corp_id</Data>
+<Order>corp_id</Order></DbDetails>
+<OnClick><if cond="%{corp_vLst[corp_id]}"><DbDetails><Where>corp_id='%{corp_vLst[corp_id]}'</Where></DbDetails><submit namelist="DbDetails" next="$parent.%{frmwndctrl}"/><submit function="onok"/></if></OnClick>
+</ListCtrl>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+</Ctrls></WndTap>

@@ -1,0 +1,10 @@
+﻿<GroupBox cols="xs12 sm6 md4" Name="GBOPVmat_po"><Ctrls>
+<TAB/><Button Text="initial" ToolTip="ttp_initial" Name="initialmat_po" Size="50,20">
+<OnClick><submit next="mat_po_vLst" function="initial"/><submit next="records_mat_po" function="initial"/></OnClick></Button>
+<TAB/><Button Text="firstpage" Name="FPmat_po_vLst" Size="50,20">
+<OnClick><submit next="mat_po_vLst" function="GetPage(first)"/><submit next="records_mat_po"/></OnClick></Button>
+<Button Text="prepage" Name="PREmat_po_vLst" Size="50,20">
+<OnClick><submit next="mat_po_vLst" function="GetPage(Pre)"/></OnClick></Button>
+<Button Text="nextpage" Name="NPmat_po_vLst" Size="50,20">
+<OnClick><submit next="mat_po_vLst" function="GetPage(Next)"/></OnClick></Button>
+</Ctrls></GroupBox>

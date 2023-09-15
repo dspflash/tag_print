@@ -1,0 +1,20 @@
+﻿<GroupBox Name="GBDVmaterial" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Name="material_vLst" ToolTip="ttp_material_v" Size="700,450" OnLoad="init" Heading="mat_no,100;mat_name,110;num_per_cab,55;corp_id,120;mat_id,20;" loadedclick="0">
+	<DbDetails >
+<Index>mat_id</Index>
+<DbTable>material m left join corp c on m.corp_id=c.corp_id</DbTable>
+<Data>m.mat_no,m.mat_name,m.num_per_cab,c.corp_name corp_id,m.mat_id</Data>
+<Order>mat_id</Order></DbDetails>
+<operator refresh="1" initial="0" firstpage="0" prepage="0" nextpage="0">
+<op text="modify"><DbDetails><Where>mat_id='%{material_vLst[mat_id]}'</Where></DbDetails><submit namelist="DbDetails" next="$this.material.materialLst"/><assign name="$this.material.frmwndctrl" expr="%{this}"/></op>
+<op text="delete" needconfirm="1"><DbDetails>
+<DbTable>material</DbTable>
+<Where>mat_id='%{material_vLst[mat_id]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit/></op>
+</operator>
+<OnChanged>
+<assign name="pgcur_material" expr="js(%{material_vLst[currentpage]}+1)"/>
+<assign name="pgscb_material" expr="js(%{material_vLst[currentpage]}+1)" function="SetSel"/>
+</OnChanged></ListCtrl>
+</Ctrls></GroupBox>

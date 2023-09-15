@@ -1,0 +1,14 @@
+﻿<GroupBox Name="GBDEDITcorp"><Ctrls>
+<GroupBox Multiline="0" Name="GB_corp_name" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_corp_name" Text="corp_name"/>
+<TextBox Weight="110" Size="110,20" Name="corp_name" Text="" ToolTip="ttp_corp_name"/>
+</Ctrls></GroupBox>
+<GroupBox Multiline="0" Name="GB_vender_no" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_vender_no" Text="vender_no"/>
+<TextBox Weight="110" Size="110,20" Name="vender_no" Text="" ToolTip="ttp_vender_no"/>
+</Ctrls></GroupBox>
+<GroupBox overlap="pre" Multiline="0" Name="GB_corp_id" Visible="false" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" overlap="pre" Size="120,20" Name="lb_corp_id" Visible="false" Text="corp_id" readonly="true"/>
+<TextBox overlap="pre" Weight="110" Size="110,20" Name="corp_id" Visible="false" Text="" ToolTip="ttp_corp_id" readonly="true"><OnEnChange><if cond="'%{corp_id}'"><SetVisible name="insertcorp" Visible="0"/><SetVisible name="modifycorp" Visible="1"/><else/><SetVisible name="insertcorp" Visible="1"/><SetVisible name="modifycorp" Visible="0"/></if></OnEnChange></TextBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

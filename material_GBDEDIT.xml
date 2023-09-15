@@ -1,0 +1,28 @@
+﻿<GroupBox Name="GBDEDITmaterial"><Ctrls>
+<GroupBox Multiline="0" Name="GB_mat_no" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_mat_no" Text="mat_no"/>
+<TextBox Weight="100" Size="100,20" Name="mat_no" Text="" ToolTip="ttp_mat_no"/>
+</Ctrls></GroupBox>
+<GroupBox Multiline="0" Name="GB_mat_name" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_mat_name" Text="mat_name"/>
+<TextBox Weight="110" Size="110,20" Name="mat_name" Text="" ToolTip="ttp_mat_name"/>
+</Ctrls></GroupBox>
+<GroupBox Multiline="0" Name="GB_num_per_cab" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_num_per_cab" Text="num_per_cab"/>
+<TextBox Weight="110" Size="110,20" Name="num_per_cab" Text="" ToolTip="ttp_num_per_cab"/>
+</Ctrls></GroupBox>
+<BR AutoHeight="1"/><GroupBox Multiline="0" Name="GB_corp_id" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" selectedIndex="0" Size="120,20" Name="lb_corp_id" Text="corp_id" onload="init"/>
+<ComboBox selectedIndex="0" Weight="90" Size="90,100" Name="corp_id" Text="" ToolTip="ttp_corp_id" onload="init">
+	<DbDetails>
+<Index>corp_id</Index>
+<DbTable>corp</DbTable>
+<Data>corp_name,corp_id</Data>
+<Where/>
+<queryFormat/></DbDetails></ComboBox>
+<MagicCtrl Link="tip:刷新" images=",data/refresh.png" button="type:0" Size="20,20" Name="refreshcorp_id"><OnClick><submit next="corp_id"/></OnClick></MagicCtrl>\r\n</Ctrls></GroupBox>
+<GroupBox overlap="pre" Multiline="0" Name="GB_mat_id" Visible="false" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" overlap="pre" Size="120,20" Name="lb_mat_id" Visible="false" Text="mat_id" readonly="true"/>
+<TextBox overlap="pre" Weight="110" Size="110,20" Name="mat_id" Visible="false" Text="" ToolTip="ttp_mat_id" readonly="true"><OnEnChange><if cond="'%{mat_id}'"><SetVisible name="insertmaterial" Visible="0"/><SetVisible name="modifymaterial" Visible="1"/><else/><SetVisible name="insertmaterial" Visible="1"/><SetVisible name="modifymaterial" Visible="0"/></if></OnEnChange></TextBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

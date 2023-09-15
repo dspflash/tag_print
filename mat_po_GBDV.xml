@@ -1,0 +1,10 @@
+﻿<GroupBox Name="GBDVmat_po" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Size="700,450" loadedclick="0" Name="mat_poLst" ToolTip="ttp_mat_po" Heading="mat_id,120;wip_no,100;num_po,55;dt,150;mat_poid,20;">
+	<DbDetails fcsm="1">
+<Index>mat_poid</Index>
+<DbTable>mat_po m left join material m0 on m.mat_id=m0.mat_id</DbTable>
+<Data>m0.mat_name mat_id,m.wip_no,m.num_po,m.dt,m.mat_poid</Data>
+<Order>mat_poid</Order></DbDetails>%{}
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_ops.xml"/>
+</ListCtrl>
+</Ctrls></GroupBox>

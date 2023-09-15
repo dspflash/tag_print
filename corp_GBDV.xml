@@ -1,0 +1,17 @@
+﻿<GroupBox Name="GBDVcorp" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Size="700,450" loadedclick="0" Name="corpLst" ToolTip="ttp_corp" Heading="corp_name,250;vender_no,250;corp_id,20;">
+	<DbDetails fcsm="1">
+<Index>corp_id</Index>
+<DbTable>corp</DbTable>
+<Data>corp_name,vender_no,corp_id</Data>
+<Order>corp_id</Order></DbDetails>%{}
+<operator firstpage="0" nextpage="0" initial="0" prepage="0" refresh="1">
+<op text="modify"><DbDetails><Where>corp_id='%{corp_vLst[corp_id]}'</Where></DbDetails><submit namelist="DbDetails" next="$this.corp.corpLst"/><assign expr="%{this}" name="$this.corp.frmwndctrl"/></op>
+<op needconfirm="1" text="delete"><DbDetails>
+<DbTable>corp</DbTable>
+<Where>corp_id='%{corp_vLst[corp_id]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit/></op>
+</operator>
+</ListCtrl>
+</Ctrls></GroupBox>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<biztoolcfg jointbls="1" tableTxt="corp" header2Link="" qryfmtOpCreate="" referLst="0" lines2Link="" qryfmtOpUpdate="" exdata4select="" onLoadInit="0" loadedClick="0" tableNm="corp" LstTP="Lst">
+  <Ctrls>
+    <Ctrl Required="1" name="corp_name"/>
+    <Ctrl Required="1" name="vender_no"/>
+    <Ctrl noquery="1" noUpdate="1" noInsert="1" nomodify="1" name="corp_id" ctrlhide="1" noInAndUp="1"/>
+  </Ctrls>
+</biztoolcfg>

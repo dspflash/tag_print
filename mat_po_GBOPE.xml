@@ -1,0 +1,51 @@
+﻿<GroupBox Size="100,100" Name="GBOPEmat_po" cols="xs12 sm6 md4"><Ctrls>
+<Button Weight="50" Size="50,20" sqlpkinsert="mat_poid" Name="insertmat_po" Text="create" ToolTip="ttp_createmat_po">
+<OnClick>
+<DbDetails mode="insert" fcsm="1">
+<DbTable>mat_po</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>mat_id[mat_id],wip_no,num_po,dt</Data>
+<DataEx/>
+<queryFormat>insert into %{table} %{data}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{insertmat_po[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="mat_poLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="1"><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.mat_po_vLst"/></if></if></if></if>
+	</OnClick>
+	</Button><TAB/>
+<Button Weight="50" Size="50,20"  Name="printmat_po" Text="Print" ToolTip="ttp_Printmat_po">
+<OnClick>
+<assign name="$parent.so_inv_print.cab_nums" expr=""/>
+	<assign name="$parent.so_inv_print.cab_no" expr="0"/>
+	<assign name="$parent.so_inv_print.serial_no" expr="%{$parent.serial_no_init}"/>
+	<submit next="$parent.so_inv_print.wip_num_po" function="resetcontent"/>
+	<submit next="$parent.so_inv_print.qr_itemname" function="resetcontent"/>
+	<DbDetails fcsm="1"><DbTable>material m join corp c on m.corp_id=c.corp_id</DbTable>
+<Index>mat_poid</Index>
+<Data>'%{num_po}' num_po,strftime('%Y%m%d', '%{dt}') date_inv,'%{wip_no}' wip_no,mat_no,mat_name,num_per_cab cab_nums,corp_name,vender_no</Data>
+<queryFormat/><Where>mat_id='%{mat_id[mat_id]}'</Where>
+</DbDetails>
+	<submit namelist="DbDetails" next="$parent.so_inv_print.wip_num_po"/>
+	</OnClick>
+	</Button><TAB/><Button Weight="50" Size="50,20" Name="modifymat_po" Text="modify" ToolTip="ttp_modifymat_po">
+<OnClick>
+<DbDetails mode="update" fcsm="1">
+<DbTable>mat_po</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>mat_id[mat_id],wip_no,num_po,dt</Data>
+<DataEx/>
+<Where>mat_poid='%{mat_poid}'</Where>
+<queryFormat>update %{table} set %{data} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{modifymat_po[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="mat_poLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.mat_po_vLst"/></if></if></if>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="resetmat_po" Text="reset" ToolTip="ttp_resetmat_po">
+<OnClick>
+<submit function="reset" next="GBDEDITmat_po"/>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="gsearchmat_po" visible="false" Text="Search" ToolTip="ttp_gsearchmat_po">
+<OnClick>
+<search prefixand="0" inputed="1" next="mat_poLst" prefixwhere="0" listed="0"/><submit namelist="search" function="search" next="GBDEDITmat_po"/>
+	</OnClick>
+</Button><TAB/>
+</Ctrls></GroupBox>

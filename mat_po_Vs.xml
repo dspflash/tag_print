@@ -1,0 +1,6 @@
+﻿<GroupBox Name="GBDEDITmat_po" text="Search" toggle="1"><Ctrls>
+<GroupBox Name="GB_wip_no" Multiline="0" cols="xs12 sm6 md4"><Ctrls>
+<Label Name="lb_wip_no" Size="120,20" Text="wip_no" Align="Right"/>
+<TextBox Name="wip_no" Size="100,20" Text="" Weight="100" ToolTip="ttp_wip_no"></TextBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

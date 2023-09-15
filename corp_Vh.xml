@@ -1,0 +1,12 @@
+﻿<GroupBox Name="GBDVcorp" cols="xs12 sm12 md12 lg12" visible="0"><Ctrls>
+<ListCtrl Name="corpLst" ToolTip="ttp_corp" Size="70,20" visible="0" loadedclick="1">
+	<DbDetails fcsm="1">
+<Index>corp_id</Index>
+<DbTable>corp</DbTable>
+<Data>corp_name,vender_no,corp_id</Data>
+<Order>corp_id</Order></DbDetails>
+<OnClick>
+<if cond="'%{corp_id}'"><SetVisible name="insertcorp" Visible="0"/><SetVisible name="modifycorp" Visible="1"/></if>
+</OnClick>
+</ListCtrl>
+</Ctrls></GroupBox>

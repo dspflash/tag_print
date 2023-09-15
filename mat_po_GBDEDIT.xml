@@ -1,0 +1,28 @@
+﻿<GroupBox Name="GBDEDITmat_po"><Ctrls>
+<GroupBox Multiline="0" Name="GB_mat_id" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_mat_id" Text="mat_id" onload="init"/>
+<ComboBox Weight="90" Size="90,100" Name="mat_id" Text="" ToolTip="ttp_mat_id" onload="init">
+	<DbDetails>
+<Index>mat_id</Index>
+<DbTable>material</DbTable>
+<Data>mat_name,mat_id</Data>
+<Where/>
+<queryFormat/></DbDetails></ComboBox>
+<MagicCtrl Link="tip:刷新" images=",data/refresh.png" button="type:0" Size="20,20" Name="refreshmat_id"><OnClick><submit next="mat_id"/></OnClick></MagicCtrl>\r\n</Ctrls></GroupBox>
+<GroupBox Multiline="0" Name="GB_wip_no" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_wip_no" Text="wip_no"/>
+<TextBox Weight="100" Size="100,20" Name="wip_no" Text="" ToolTip="ttp_wip_no"/>
+</Ctrls></GroupBox>
+<GroupBox Multiline="0" Name="GB_num_po" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Size="120,20" Name="lb_num_po" Text="num_po"/>
+<TextBox Weight="110" Size="110,20" Name="num_po" Text="" ToolTip="ttp_num_po"/>
+</Ctrls></GroupBox>
+<BR AutoHeight="1"/><GroupBox Multiline="0" Name="GB_dt" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" Format="yyyy-MM-dd" Size="120,20" Name="lb_dt" Text="dt"/>
+<DateTime Weight="110" Format="yyyy-MM-dd" Size="110,20" Name="dt" Text="" ToolTip="ttp_dt"/>
+</Ctrls></GroupBox>
+<GroupBox overlap="pre" Multiline="0" Name="GB_mat_poid" Visible="false" cols="xs12 sm6 md4"><Ctrls>
+<Label Align="Right" overlap="pre" Size="120,20" Name="lb_mat_poid" Visible="false" Text="mat_poid" readonly="true"/>
+<TextBox overlap="pre" Weight="110" Size="110,20" Name="mat_poid" Visible="false" Text="" ToolTip="ttp_mat_poid" readonly="true"><OnEnChange><if cond="'%{mat_poid}'"><SetVisible name="insertmat_po" Visible="0"/><SetVisible name="modifymat_po" Visible="1"/><else/><SetVisible name="insertmat_po" Visible="1"/><SetVisible name="modifymat_po" Visible="0"/></if></OnEnChange></TextBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

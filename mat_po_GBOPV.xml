@@ -1,0 +1,17 @@
+﻿<GroupBox Size="100,100" Name="GBOPVmat_po" cols="xs12 sm6 md4"><Ctrls>
+<Button Weight="50" Size="50,20" Name="deletemat_po" Text="delete" ToolTip="ttp_deletemat_po">
+<OnClick>
+	<DbDetails fcsm="1">
+<DbTable>mat_po</DbTable>
+<Where>mat_poid='%{mat_poLst[mat_poid]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit function="click" next="searchmat_po"/>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="searchmat_po" Text="refresh" ToolTip="ttp_refreshmat_po">
+<OnClick><submit next="mat_poLst"/>	</OnClick>
+</Button>
+<TAB/><TAB/><Button OnClick="(mat_poLst)GetPage(First)" Size="50,20" Name="FPmat_poLst" Text="firstpage"/>
+<TAB/><Button Weight="50" OnClick="(mat_poLst)GetPage(Pre)" Size="50,20" Name="PREmat_poLst" Text="prepage"/>
+<TAB/><Button Weight="50" OnClick="(mat_poLst)GetPage(Next)" Size="50,20" Name="NPmat_poLst" Text="nextpage"/>
+</Ctrls></GroupBox>

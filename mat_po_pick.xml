@@ -1,0 +1,28 @@
+﻿<WndTap Name="mat_po_pick" Text="mat_po_Pick">
+<var name="searchtmpl"><mat_id format="m.mat_id='%{opvalue}'"/><wip_no format="(m.wip_no like '%%{opvalue}%')"/><num_po format="(m.num_po like '%%{opvalue}%')"/><dt format="(m.dt between '%{dt[datetime]}' and '%{dt[datetime2]}')"/><mat_poid format="(m.mat_poid like '%%{opvalue}%')"/></var>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\mat_po.xml"/>
+<Ctrls><GroupBox  Name="GBmat_po" id="mat_po" Text="mat_po" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_Vs.xml"/>
+<BR AutoHeight="1"/><GroupBox  Name="GBOPVmat_po" Size="100,20" cols="xs12 sm6 md4"><Ctrls>
+<Button Text="reset" ToolTip="ttp_resetmat_po" Name="resetmat_po" Size="50,20">
+	<OnClick>
+		<submit next="GBDEDITmat_po" function="reset"/>
+	</OnClick>
+</Button><TAB/>
+<Button Text="Search" ToolTip="ttp_gsearchmat_po" Name="gsearchmat_po" Size="50,20">
+	<OnClick>
+		<search next="mat_po_vLst" listed="0" prefixwhere="0" prefixand="0" inputed="1">%{searchtmpl}</search><submit next="GBDEDITmat_po" namelist="search" function="search"/>
+	</OnClick>
+</Button><TAB/></Ctrls></GroupBox>
+<BR AutoHeight="1"/><GroupBox Name="GBDVmat_po" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Name="mat_po_vLst" ToolTip="ttp_mat_po_v" Size="700,450" Heading="mat_id,120;wip_no,100;num_po,55;dt,150;mat_poid,20;" loadedclick="0">
+	<DbDetails >
+<Index>mat_poid</Index>
+<DbTable>mat_po m left join material m0 on m.mat_id=m0.mat_id</DbTable>
+<Data>m0.mat_name mat_id,m.wip_no,m.num_po,m.dt,m.mat_poid</Data>
+<Order>mat_poid</Order></DbDetails>
+<OnClick><if cond="%{mat_po_vLst[mat_poid]}"><DbDetails><Where>mat_poid='%{mat_po_vLst[mat_poid]}'</Where></DbDetails><submit namelist="DbDetails" next="$parent.%{frmwndctrl}"/><submit function="onok"/></if></OnClick>
+</ListCtrl>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+</Ctrls></WndTap>

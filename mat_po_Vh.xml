@@ -1,0 +1,12 @@
+﻿<GroupBox Name="GBDVmat_po" cols="xs12 sm12 md12 lg12" visible="0"><Ctrls>
+<ListCtrl Name="mat_poLst" ToolTip="ttp_mat_po" Size="70,20" visible="0" loadedclick="1">
+	<DbDetails fcsm="1">
+<Index>mat_poid</Index>
+<DbTable>mat_po</DbTable>
+<Data>mat_id,wip_no,num_po,dt,mat_poid</Data>
+<Order>mat_poid</Order></DbDetails>
+<OnClick><assign name="mat_id[mat_id]" expr="%{mat_poLst[mat_id]}" function="SetSel"/>
+<if cond="'%{mat_poid}'"><SetVisible name="insertmat_po" Visible="0"/><SetVisible name="modifymat_po" Visible="1"/></if>
+</OnClick>
+</ListCtrl>
+</Ctrls></GroupBox>

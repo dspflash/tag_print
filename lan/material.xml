@@ -1,0 +1,31 @@
+﻿<Language name="material">
+<Lang name="material" value="料件"/>
+<Lang name="material_v" value="料件管理"/>
+<Lang name="TabEditmaterial" value="material Edit"/>
+<Lang name="TabViewmaterial" value="material View"/>
+<Lang name="mat_no" value="料号"/>
+<Lang name="ttp_mat_no" value=""/>
+<Lang name="mat_name" value="品名"/>
+<Lang name="ttp_mat_name" value=""/>
+<Lang name="num_per_cab" value="单箱数量"/>
+<Lang name="ttp_num_per_cab" value=""/>
+<Lang name="corp_id" value="企业"/>
+<Lang name="ttp_corp_id" value=""/>
+<Lang name="mat_id" value=""/>
+<Lang name="ttp_mat_id" value=""/>
+<Lang name="ttp_operationmaterial" value=""/>
+<Lang name="ttp_creatematerial" value=""/>
+<Lang name="ttp_modifymaterial" value=""/>
+<Lang name="ttp_resetmaterial" value=""/>
+<Lang name="ttp_deletematerial" value=""/>
+<Lang name="ttp_refreshmaterial" value=""/>
+<Lang name="operation" value=""/>
+<Lang name="create" value=""/>
+<Lang name="modify" value=""/>
+<Lang name="reset" value=""/>
+<Lang name="delete" value=""/>
+<Lang name="refresh" value=""/>
+<Lang name="firstpage" value=""/>
+<Lang name="prepage" value=""/>
+<Lang name="nextpage" value=""/>
+</Language>

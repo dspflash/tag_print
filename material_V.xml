@@ -1,0 +1,31 @@
+﻿<WndTap Name="material_v" Text="material_v">
+<WndTaps>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Ve.xml" popup="1"/>
+</WndTaps>
+<var name="searchtmpl"><mat_no format="(m.mat_no like '%%{opvalue}%')"/><mat_name format="(m.mat_name like '%%{opvalue}%')"/><num_per_cab format="(m.num_per_cab like '%%{opvalue}%')"/><corp_id format="m.corp_id='%{opvalue}'"/><mat_id format="(m.mat_id like '%%{opvalue}%')"/></var>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\material.xml"/>
+<Ctrls><GroupBox  Name="GBmaterial" id="material" Text="material" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Vs.xml"/>
+<BR AutoHeight="1"/><GroupBox  Name="GBOPVmaterial" Size="100,20" cols="xs12 sm6 md4"><Ctrls>
+<Button Text="addone" ToolTip="ttp_addone" Name="addone" Size="50,20" Weight="50">
+	<OnClick>
+		<submit next="$this.material.GBDEDITmaterial" function="reset"/>
+		<assign name = "$this.material.frmwndctrl" expr="%{$this.material_vLst}"/></OnClick>
+</Button><TAB/>
+<Button Text="reset" ToolTip="ttp_resetmaterial" Name="resetmaterial" Size="50,20" Weight="50">
+	<OnClick>
+		<submit next="GBDEDITmaterial" function="reset"/></OnClick>
+</Button><TAB/>
+<Button Text="Search" ToolTip="ttp_gsearchmaterial" Name="gsearchmaterial" Size="50,20" Weight="50">
+	<OnClick>
+		<search next="material_vLst" listed="0" prefixwhere="0" prefixand="0" inputed="1">%{searchtmpl}</search>
+		<submit next="GBDEDITmaterial" namelist="search" function="search"/>
+		<search next="records_material" listed="0" prefixwhere="1" prefixand="0" inputed="1">%{searchtmpl}</search>
+		<submit next="GBDEDITmaterial" namelist="search" function="search"/>
+	</OnClick>
+</Button><TAB/></Ctrls></GroupBox>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Vpg.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Vpgop.xml"/>
+<BR AutoHeight="1"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Vv.xml"/>
+</Ctrls></GroupBox>
+</Ctrls></WndTap>

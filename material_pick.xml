@@ -1,0 +1,28 @@
+﻿<WndTap Name="material_pick" Text="material_Pick">
+<var name="searchtmpl"><mat_no format="(m.mat_no like '%%{opvalue}%')"/><mat_name format="(m.mat_name like '%%{opvalue}%')"/><num_per_cab format="(m.num_per_cab like '%%{opvalue}%')"/><corp_id format="m.corp_id='%{opvalue}'"/><mat_id format="(m.mat_id like '%%{opvalue}%')"/></var>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\material.xml"/>
+<Ctrls><GroupBox  Name="GBmaterial" id="material" Text="material" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_Vs.xml"/>
+<BR AutoHeight="1"/><GroupBox  Name="GBOPVmaterial" Size="100,20" cols="xs12 sm6 md4"><Ctrls>
+<Button Text="reset" ToolTip="ttp_resetmaterial" Name="resetmaterial" Size="50,20">
+	<OnClick>
+		<submit next="GBDEDITmaterial" function="reset"/>
+	</OnClick>
+</Button><TAB/>
+<Button Text="Search" ToolTip="ttp_gsearchmaterial" Name="gsearchmaterial" Size="50,20">
+	<OnClick>
+		<search next="material_vLst" listed="0" prefixwhere="0" prefixand="0" inputed="1">%{searchtmpl}</search><submit next="GBDEDITmaterial" namelist="search" function="search"/>
+	</OnClick>
+</Button><TAB/></Ctrls></GroupBox>
+<BR AutoHeight="1"/><GroupBox Name="GBDVmaterial" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Name="material_vLst" ToolTip="ttp_material_v" Size="700,450" Heading="mat_no,100;mat_name,110;num_per_cab,55;corp_id,120;mat_id,20;" loadedclick="0">
+	<DbDetails >
+<Index>mat_id</Index>
+<DbTable>material m left join corp c on m.corp_id=c.corp_id</DbTable>
+<Data>m.mat_no,m.mat_name,m.num_per_cab,c.corp_name corp_id,m.mat_id</Data>
+<Order>mat_id</Order></DbDetails>
+<OnClick><if cond="%{material_vLst[mat_id]}"><DbDetails><Where>mat_id='%{material_vLst[mat_id]}'</Where></DbDetails><submit namelist="DbDetails" next="$parent.%{frmwndctrl}"/><submit function="onok"/></if></OnClick>
+</ListCtrl>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+</Ctrls></WndTap>

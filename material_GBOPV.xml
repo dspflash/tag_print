@@ -1,0 +1,17 @@
+﻿<GroupBox Size="100,100" Name="GBOPVmaterial" cols="xs12 sm6 md4"><Ctrls>
+<Button Weight="50" Size="50,20" Name="deletematerial" Text="delete" ToolTip="ttp_deletematerial">
+<OnClick>
+	<DbDetails fcsm="1">
+<DbTable>material</DbTable>
+<Where>mat_id='%{materialLst[mat_id]}'</Where>
+<queryFormat>delete from %{table} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><submit function="click" next="searchmaterial"/>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="searchmaterial" Text="refresh" ToolTip="ttp_refreshmaterial">
+<OnClick><submit next="materialLst"/>	</OnClick>
+</Button>
+<TAB/><TAB/><Button OnClick="(materialLst)GetPage(First)" Size="50,20" Name="FPmaterialLst" Text="firstpage"/>
+<TAB/><Button Weight="50" OnClick="(materialLst)GetPage(Pre)" Size="50,20" Name="PREmaterialLst" Text="prepage"/>
+<TAB/><Button Weight="50" OnClick="(materialLst)GetPage(Next)" Size="50,20" Name="NPmaterialLst" Text="nextpage"/>
+</Ctrls></GroupBox>

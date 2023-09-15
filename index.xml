@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><BXML navtype="tree" font-family0="华文行楷" font-size0="80">
+<DbDetails remark="For sqlite BizXML Tool should pass 'sqlite' as dbtype in config">
+	<SubDriver>SQLite</SubDriver>
+	<Host>localhost</Host>
+	<database>layout\ucin\tag_print\i3x.db</database>
+	<characterset>utf8</characterset>
+	<config>select 'sqlite' as dbtype</config>
+	</DbDetails>
+<EventHandlers/>
+<EventTriggers>
+	
+</EventTriggers>
+<var expr="1" name="biztoolsqleditor"/>
+<var expr="1" name="biztoolinitdb"/>
+<var expr="" name="dbext"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\general.xml"/>
+<WndTaps>
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="corp_v.xml"/>
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="material_v.xml"/>
+	<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_vm.xml"></xi:include>
+	</WndTaps>
+</BXML>

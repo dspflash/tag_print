@@ -1,0 +1,11 @@
+﻿<GroupBox Name="GBDEDITbarcode" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_barcode_input" printborder="0"><Ctrls>
+<TextBox Text="" ToolTip="ttp_barcode" Name="mat_barcode" Size="120,20"><OnEnChange><magicdata type="20" notext="0" width="120" height="10"  filename="qr_barcode.png"><data>%{mat_barcode}</data></magicdata><submit next="qr_barcode" namelist="magicdata" function="B65ABE3E-702E-4762-99FD-FB40546733B0"/></OnEnChange></TextBox>
+</Ctrls></GroupBox><BR/>
+<GroupBox Multiline="0" Name="GB_barcode" printborder="0"><Ctrls>
+<MagicCtrl Name="qr_barcode" link="tip:qr_vendor" images="layout/ucin,logo.png" Size="120,15" OnLoad="init">
+	<interface id="barencode" type="IBizInterface" codebase="barencode.dll" dir="layout/ucin/" classid="B65ABE3E-702E-4762-99FD-FB40546733B0" version="3.1"/>
+	<OnEvent_B65ABE3E-702E-4762-99FD-FB40546733B0_1><if cond="%{qr_barcode[B65ABE3E-702E-4762-99FD-FB40546733B0.data]}"><DbDetails><queryFormat>select '%{qr_barcode[B65ABE3E-702E-4762-99FD-FB40546733B0.data]}' as images</queryFormat></DbDetails><submit namelist="DbDetails"/></if></OnEvent_B65ABE3E-702E-4762-99FD-FB40546733B0_1>
+</MagicCtrl><BR AutoHeight="1"/>
+</Ctrls></GroupBox>
+ </Ctrls></GroupBox>

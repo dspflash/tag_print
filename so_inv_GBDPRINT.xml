@@ -1,0 +1,103 @@
+﻿<GroupBox Name="GBDEDITwip_wo_header" printborder="0"><Ctrls>
+<Label Align="Right" Text="" Name="lb_x_adjust_left" Size="10,20"/>
+<GroupBox Name="GBDEDITwip_wo_header_" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_lot_number_id" printborder="0"><Ctrls>
+<Label Align="Right" Text="" Name="lb_x" Size="20,20"/>
+<Label Align="Center" Text="环境关联物资管制标签(无卤)" Name="lb_org_name" Size="230,20"/><BR/>
+<Label Align="Right" Text="" Name="lb_x" Size="30,20"/>
+<Label Align="Center" Text="新进材料专用标签" Name="lb_org_name" Size="210,20"/>
+</Ctrls></GroupBox><BR/>
+<GroupBox Multiline="0" Name="GB_mat_no" printborder="0"><Ctrls>
+<Label Align="Left" Text="料号  ：" Name="lb_mat_no" readonly="true" Size="60,20"/> 
+<TextBox Text="" ToolTip="ttp_mat_no" Name="mat_no" readonly="true" Size="220,20">
+</TextBox> </Ctrls></GroupBox>
+<BR/>
+<GroupBox Multiline="0" Name="GB_mat_name" printborder="0"><Ctrls>
+<Label Align="Left" Text="品名  ：" Name="lb_mat_name" readonly="true" Size="60,20"/> 
+<TextBox Text="" ToolTip="ttp_mat_name" Name="mat_name" readonly="true" Size="240,20">
+</TextBox> </Ctrls></GroupBox>
+<BR/>
+<GroupBox Multiline="0" Name="GB_TopLeft" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_org_name" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_cab_nums" printborder="0"><Ctrls>
+<Label Align="Left" Text="单箱数量：" Name="lb_cab_nums" Size="80,20"/>
+<TextBox Text="" ToolTip="ttp_cab_nums" Name="cab_nums" Size="50,20">
+<OnEnChange>
+<if cond="%{cab_no}==0"><assign name="cab_no" expr="1"/></if>
+</OnEnChange>
+</TextBox>
+<Label Align="" Text="" Name="lb_cab_nums_suffix" Size="60,20"/>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+
+<BR/>
+<GroupBox Multiline="0" Name="GB_default_buyer" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_cabs" printborder="0"><Ctrls>
+<Label Align="Left" Text="共计箱数：" Name="lb_cabs" Size="80,20"/>
+</Ctrls></GroupBox>
+<TextBox Text="" ToolTip="ttp_cabs" Name="cabs" Size="100,20"/>
+</Ctrls></GroupBox>
+
+<BR/>
+<GroupBox Multiline="0" Name="GB_item_tpx" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_cab_no" printborder="0"><Ctrls>
+<Label Align="Left" Text="箱号：" Name="lb_cab_no" Size="60,20"/>
+</Ctrls></GroupBox>
+<TextBox Text="" ToolTip="ttp_cab_no" Name="cab_no" Size="30,20" readonly="1" Number="1">
+<OnEnChange><if cond="%{cab_no}&gt;1 && %{cab_no}===%{cabs_}"><assign name="cab_nums" expr="js(%{wip_num_po[num_po]}-(%{wip_num_po[cab_nums]}*(%{cab_no}-1)))"/><if cond="%{cab_nums}!=%{wip_num_po[cab_nums]}"><assign name="lb_cab_nums_suffix" expr="(尾数)"/><else/><assign name="lb_cab_nums_suffix" expr=""/>
+</if><else/><assign name="lb_cab_nums_suffix" expr=""/></if>
+<if cond="'%{cab_nums}'"><magicdata filename="data/qr_wip_wo_inv_number.png"><data>%{wip_num_po[mat_no]}#%{cab_nums}#%{wip_num_po[date_inv]}%{wip_num_po[vender_no]}%{serial_no}#%{wip_num_po[wip_no]}</data></magicdata>
+<submit next="qr_itemname" namelist="magicdata" function="B65ABE3E-702E-4762-99FD-FB40546733B0"/></if>
+<if cond="%{cab_no}"><assign name="serial_no" expr="js((Array(5).join(0) + ('9'+'%{serial_no}'-900000+1)).slice(-5))"/></if>
+</OnEnChange></TextBox>
+<Label Align="" Text="/" Name="lb_cab_no_" Size="20,20"/>
+<TextBox Text="" ToolTip="ttp_cabs" Name="cabs_" Size="30,20" Number="1"/>
+</Ctrls></GroupBox>
+
+<BR/>
+<GroupBox Multiline="0" Name="GB_item_name" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_date_inv" printborder="0"><Ctrls>
+<Label Align="Left" Text="进料日期：" Name="lb_date_inv" Size="80,20"/>
+</Ctrls></GroupBox>
+<DateTime ToolTip="ttp_date_inv" Name="date_inv" Size="100,20" Format="yyyy-MM-dd"></DateTime>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+
+<GroupBox Multiline="0" Name="GB_qr_item_name" Padding="1,1,1,1"><Ctrls>
+<MagicCtrl Name="qr_itemname" link="tip:qr_itemname" images="layout/ucin,logo.png" Size="100,100" OnLoad="init">
+	<interface id="barencode" type="IBizInterface" codebase="barencode.dll" dir="layout/ucin/" classid="B65ABE3E-702E-4762-99FD-FB40546733B0" version="3.0"/>
+	<OnEvent_B65ABE3E-702E-4762-99FD-FB40546733B0_1><if cond="%{qr_itemname[B65ABE3E-702E-4762-99FD-FB40546733B0.data]}"><DbDetails><queryFormat>select '%{qr_itemname[B65ABE3E-702E-4762-99FD-FB40546733B0.data]}' as images</queryFormat></DbDetails><submit namelist="DbDetails"/><submit namelist="DbDetails" next="qr_itemname1"/><assign name="qrok" expr="1"/></if></OnEvent_B65ABE3E-702E-4762-99FD-FB40546733B0_1>
+	</MagicCtrl>
+</Ctrls></GroupBox>
+
+<BR/>
+<GroupBox Multiline="0" Name="GB_wip_nobox" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_wip_no" printborder="0"><Ctrls>
+<Label Align="" Text="工单号：" Name="lb_wip_no" Size="70,20"/>
+</Ctrls></GroupBox>
+<TextBox Text="" Name="wip_no" ToolTip="" Size="160,20">
+<OnEnterKey>
+
+</OnEnterKey></TextBox>
+</Ctrls></GroupBox>
+
+<BR/>
+<GroupBox Multiline="0" Name="GB_completion_date" printborder="0"><Ctrls>
+<GroupBox Multiline="0" Name="GB_wip_num_po" printborder="0"><Ctrls>
+<Label Align="" Text="工单进料总数量：" Name="lb_wip_num_po" Size="120,20"/>
+</Ctrls></GroupBox>
+<TextBox Text="" ToolTip="" Name="wip_num_po" Size="120,20" Number="1">
+<DbDetails fcsm="1">
+<DbTable>mat_po p join material m on p.mat_id=m.mat_id join corp c on m.corp_id=c.corp_id</DbTable>
+<Index>mat_poid</Index>
+<Data>num_po,wip_no,strftime('%Y%m%d', dt) date_inv,mat_no,mat_name,num_per_cab cab_nums,corp_name,vender_no,mat_poid</Data>
+<queryFormat/></DbDetails>
+<OnEnChange><assign name="cabs" expr="js(Math.ceil(%{wip_num_po[num_po]}/%{wip_num_po[cab_nums]}))"/><assign name="cabs_" expr="%{cabs}"/><assign name="cab_nums" expr="%{wip_num_po[cab_nums]}"/></OnEnChange></TextBox>
+</Ctrls></GroupBox>
+<BR/>
+<GroupBox Multiline="0" Name="GB_corp_name" printborder="0"><Ctrls>
+<Label Align="Right" Text="" Name="lb_x" Size="30,20"/>
+<Label Align="Right" Text="" Name="corp_name" Size="210,20"/>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

@@ -1,0 +1,13 @@
+﻿<WndTap Name="corp" Text="corp" Ver="2">
+<var name="refreshAfterEdit" expr="2"/>
+<var name="dataRequired" expr="corp_name,vender_no"/>
+<var name="dataRequireless" expr=""/>
+<xi:include href="lan\corp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<Ctrls>
+<GroupBox  Name="GBcorp" id="corp" Text="corp" Size="100,100"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="corp_GBDEDIT.xml"/>
+<BR AutoHeight="1"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="corp_GBOPE.xml"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="corp_Vh.xml"/></Ctrls></GroupBox></Ctrls>
+	<OnChanged></OnChanged>
+	<OnActivate><SetVisible name="insertcorp" Visible="1"/><SetVisible name="modifycorp" Visible="0"/></OnActivate>
+</WndTap>

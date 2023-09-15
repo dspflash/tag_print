@@ -1,0 +1,10 @@
+﻿<GroupBox Name="GBDEDITmaterial" text="Search" toggle="1"><Ctrls>
+<GroupBox Name="GB_mat_name" Multiline="0" cols="xs12 sm6 md4"><Ctrls>
+<Label Name="lb_mat_name" Size="120,20" Text="mat_name" Align="Right"/>
+<TextBox Name="mat_name" Size="110,20" Text="" Weight="110" ToolTip="ttp_mat_name"></TextBox>
+</Ctrls></GroupBox>
+<GroupBox Name="GB_num_per_cab" Multiline="0" cols="xs12 sm6 md4"><Ctrls>
+<Label Name="lb_num_per_cab" Size="120,20" Text="num_per_cab" Align="Right"/>
+<TextBox Name="num_per_cab" Size="110,20" Text="" Weight="110" ToolTip="ttp_num_per_cab"></TextBox>
+</Ctrls></GroupBox>
+</Ctrls></GroupBox>

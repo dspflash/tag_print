@@ -1,0 +1,13 @@
+﻿<GroupBox Name="GBDVmat_po" cols="xs12 sm12 md12 lg12"><Ctrls>
+<ListCtrl Name="mat_po_vLst" ToolTip="ttp_mat_po_v" Size="700,450" OnLoad="init" Heading="mat_id,120;wip_no,100;num_po,55;dt,150;mat_poid,20;" loadedclick="0">
+	<DbDetails >
+<Index>mat_poid</Index>
+<DbTable>mat_po m left join material m0 on m.mat_id=m0.mat_id</DbTable>
+<Data>m0.mat_name mat_id,m.wip_no,m.num_po,m.dt,m.mat_poid</Data>
+<Order>mat_poid</Order></DbDetails>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_ops.xml"/>
+<OnChanged>
+<assign name="pgcur_mat_po" expr="js(%{mat_po_vLst[currentpage]}+1)"/>
+<assign name="pgscb_mat_po" expr="js(%{mat_po_vLst[currentpage]}+1)" function="SetSel"/>
+</OnChanged></ListCtrl>
+</Ctrls></GroupBox>

@@ -1,0 +1,27 @@
+﻿<Language name="corp">
+<Lang name="corp" value="企业"/>
+<Lang name="corp_v" value="企业"/>
+<Lang name="TabEditcorp" value="corp Edit"/>
+<Lang name="TabViewcorp" value="corp View"/>
+<Lang name="corp_name" value="企业名称"/>
+<Lang name="ttp_corp_name" value=""/>
+<Lang name="vender_no" value="供应商编号"/>
+<Lang name="ttp_vender_no" value=""/>
+<Lang name="corp_id" value=""/>
+<Lang name="ttp_corp_id" value=""/>
+<Lang name="ttp_operationcorp" value=""/>
+<Lang name="ttp_createcorp" value=""/>
+<Lang name="ttp_modifycorp" value=""/>
+<Lang name="ttp_resetcorp" value=""/>
+<Lang name="ttp_deletecorp" value=""/>
+<Lang name="ttp_refreshcorp" value=""/>
+<Lang name="operation" value=""/>
+<Lang name="create" value=""/>
+<Lang name="modify" value=""/>
+<Lang name="reset" value=""/>
+<Lang name="delete" value=""/>
+<Lang name="refresh" value=""/>
+<Lang name="firstpage" value=""/>
+<Lang name="prepage" value=""/>
+<Lang name="nextpage" value=""/>
+</Language>

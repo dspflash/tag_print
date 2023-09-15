@@ -1,0 +1,37 @@
+﻿<GroupBox Size="100,100" Name="GBOPEmaterial" cols="xs12 sm6 md4"><Ctrls>
+<Button Weight="50" Size="50,20" sqlpkinsert="mat_id" Name="insertmaterial" Text="create" ToolTip="ttp_creatematerial">
+<OnClick>
+<DbDetails mode="insert" fcsm="1">
+<DbTable>material</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>mat_no,mat_name,num_per_cab,corp_id[corp_id]</Data>
+<DataEx/>
+<queryFormat>insert into %{table} %{data}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{insertmaterial[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="materialLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="1"><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.material_vLst"/></if></if></if></if>
+	</OnClick>
+	</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="modifymaterial" Text="modify" ToolTip="ttp_modifymaterial">
+<OnClick>
+<DbDetails mode="update" fcsm="1">
+<DbTable>material</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>mat_no,mat_name,num_per_cab,corp_id[corp_id]</Data>
+<DataEx/>
+<Where>mat_id='%{mat_id}'</Where>
+<queryFormat>update %{table} set %{data} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{modifymaterial[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="materialLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.material_vLst"/></if></if></if>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="resetmaterial" Text="reset" ToolTip="ttp_resetmaterial">
+<OnClick>
+<submit function="reset" next="GBDEDITmaterial"/>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="gsearchmaterial" visible="false" Text="Search" ToolTip="ttp_gsearchmaterial">
+<OnClick>
+<search prefixand="0" inputed="1" next="materialLst" prefixwhere="0" listed="0"/><submit namelist="search" function="search" next="GBDEDITmaterial"/>
+	</OnClick>
+</Button><TAB/>
+</Ctrls></GroupBox>

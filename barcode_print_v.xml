@@ -1,0 +1,19 @@
+﻿<WndTap Text="barcode_print" Name="barcode_print" Ver="2" popup="1">
+<PageCfg PaddingBox="5,5,5,5" PaddingBoxRow="0,0,0,0" PaddingBoxCol="0,0,0,0"/>
+<Language name="bc_label_rule">
+<Lang name="lot_number_id" value="批次号"/>
+</Language>
+		<Ctrls>
+		<GroupBox Text="tag_print" Name="GBtag_print" id="tag_print" Size="100,100"><Ctrls>
+		<Label Align="Right" Text="打印份数" Name="lb_copies" readonly="true" Size="60,50"/>
+		<TextBox Text="1" ToolTip="" Name="copies" Size="60,20"/><BR AutoHeight="1"/>
+	<Button Text="print" ToolTip="ttp_print" Name="print" Size="100,20" visible="true"><OnClick><submit next="GB_barcode" function="print"/><if cond="%{copies}&gt;1"><Sleep interval="500"/><assign name="copies" expr="js(%{copies}-1)"/><submit next="print" function="click"/></if></OnClick></Button>
+		<BR AutoHeight="1"/>
+		<Label Align="Right" Text="" Name="lb_" Size="30,20"/>
+		<BR AutoHeight="1"/>
+		<Label Align="Right" Text="" Name="lb_" Size="30,50"/>
+		<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="barcode_GBDPRINT.xml"></xi:include>
+		<Label Align="Right" Text="" Name="lb_" Size="30,50"/>
+	</Ctrls></GroupBox>
+	</Ctrls>
+	</WndTap>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><WndTap Name="mat_po" Text="mat_po" Ver="2">
+<var expr="1" name="refreshAfterEdit"/>
+<var expr="mat_id[mat_id],wip_no,num_po" name="dataRequired"/>
+<var expr="" name="dataRequireless"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="lan\mat_po.xml"/>
+<Ctrls>
+<GroupBox id="mat_po" Size="100,100" Name="GBmat_po" Text="mat_po"><Ctrls>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBDEDIT.xml"></xi:include><BR AutoHeight="1"/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBOPE.xml"></xi:include>
+<TAB/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBOPV.xml"></xi:include>
+<BR/><xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="mat_po_GBDV.xml"></xi:include></Ctrls></GroupBox>
+</Ctrls>
+	<OnChanged/>
+	<OnActivate/>
+	</WndTap>

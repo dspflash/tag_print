@@ -1,0 +1,37 @@
+﻿<GroupBox Size="100,100" Name="GBOPEcorp" cols="xs12 sm6 md4"><Ctrls>
+<Button Weight="50" Size="50,20" sqlpkinsert="corp_id" Name="insertcorp" Text="create" ToolTip="ttp_createcorp">
+<OnClick>
+<DbDetails mode="insert" fcsm="1">
+<DbTable>corp</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>corp_name,vender_no</Data>
+<DataEx/>
+<queryFormat>insert into %{table} %{data}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{insertcorp[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="corpLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="1"><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.corp_vLst"/></if></if></if></if>
+	</OnClick>
+	</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="modifycorp" Text="modify" ToolTip="ttp_modifycorp">
+<OnClick>
+<DbDetails mode="update" fcsm="1">
+<DbTable>corp</DbTable>
+<Required>%{dataRequired}</Required>
+<Requireless>%{dataRequireless}</Requireless>
+<Data>corp_name,vender_no</Data>
+<DataEx/>
+<Where>corp_id='%{corp_id}'</Where>
+<queryFormat>update %{table} set %{data} where %{where}</queryFormat></DbDetails>
+<submit namelist="DbDetails"/><if cond="!%{modifycorp[broke]}"><if cond="%{refreshAfterEdit}==1"><submit delay="1000" next="corpLst"/><elseif cond="%{refreshAfterEdit}==2"/><if cond="'%{frmwndctrl}'"><submit delay="1000" next="%{frmwndctrl}"/><else/><submit delay="1000" next="$parent.corp_vLst"/></if></if></if>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="resetcorp" Text="reset" ToolTip="ttp_resetcorp">
+<OnClick>
+<submit function="reset" next="GBDEDITcorp"/>
+	</OnClick>
+</Button><TAB/>
+<Button Weight="50" Size="50,20" Name="gsearchcorp" visible="false" Text="Search" ToolTip="ttp_gsearchcorp">
+<OnClick>
+<search prefixand="0" inputed="1" next="corpLst" prefixwhere="0" listed="0"/><submit namelist="search" function="search" next="GBDEDITcorp"/>
+	</OnClick>
+</Button><TAB/>
+</Ctrls></GroupBox>
