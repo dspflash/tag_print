@@ -2,8 +2,6 @@
 产品标签列印软件，支持二维码、条码等，支持连续打印，箱号自动增加等，可二次开发，使用BizXML二次开发更方便 
 源代码在 tag_print 文件夹中(90%以上的代码都是使用3UCS BizTool 自动化工具生成，给个性化定制节省了大量的时间，带来了极大的便利，参见http://3ucs.com/x) ，参看install/readme.txt。
 
-或下载<a href="https://dspflash.github.io/xrel/xbosa_tester_setup_1000.exe">bosa_tester 安装包</a>
-
 升级时可将新的代码直接覆盖tag_print文件夹的代码
 
 现在您可以使用xone客户端了，超轻量级云应用客户端，高颜值高效灵活稳定(http://3ucs.com/dl56.html)
